@@ -28,8 +28,11 @@ var setting = function(){
   $("#btn12").removeAttr("disabled");
 
   //”リモコンを設定します”
+  Android.settingStart();
+
   //リモコンの、XXボタンを押してください
   settingBtn();
+
   //以下、繰り返し
   
 
@@ -49,7 +52,6 @@ var settingBtn = function(){
  * リモコン設定完了
  */
 var confirm = function(){
-  alert("よろしいですか？");
   $("#setting").html("設定");
   $("#setting").attr("onClick", "setting()");
   $("#btnVU").attr("disabled", "disabled");
@@ -67,4 +69,13 @@ var confirm = function(){
   $("#btn10").attr("disabled","disabled");
   $("#btn11").attr("disabled","disabled");
   $("#btn12").attr("disabled","disabled");
+
+  Android.settingSave();
+}
+
+/**
+ * リモコン設定
+ */
+var buttonClicked = function(val){
+  Android.pushButtonInSettingMode(val);
 }
