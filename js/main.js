@@ -45,6 +45,10 @@ $(window).load(function(){
           var start = Number(channel.start_time.replace(":", ""));
           var end = Number(channel.end_time.replace(":", ""));
 
+          //日跨ぎ対応
+          if(start > end){
+            end = end + 2400;
+          }
 
           //Now On Air Channels
           if((start < now) && (now < end)){
