@@ -95,9 +95,18 @@ $(window).load(function(){
                 station = -1;
             }
 
-            var c = "<button type=\"button\" value="+ station +" class=\"col-xs-6 col-sm-4 btn btn-primary btn-lg mybutton\" onClick=\"channelClicked(value)\">"+ channel.title +"</button>";
+            var c = "<button value="+ station +" class=\"col-xs-6 col-sm-4 btn btn-primary btn-lg mybutton\" onClick=\"channelClicked(value)\">" +
+              "【"+　convertGenre(channel.genre) + "】<br>" +
+              channel.title + 
+              "<div id=\"ticker" + station +"\" class=\"detail\">" + tickerText(channel.detail, 13) + "</div>" +
+              "</button><br>";
 
             $("#nowOnAir").append(c);
+            $("#ticker" + station).vTicker({
+              speed: 1000,
+              pause: 1000
+            });
+
             //alert(channel.title);
           }
         }
@@ -119,4 +128,106 @@ $(window).load(function(){
 var channelClicked = function(val){
 
 	Android.pushButton(val);
+}
+
+/**
+ * genre変換
+ */
+var convertGenre = function(code, subcode){
+
+  var output = "";
+
+  switch(code){
+
+    case "0":
+      output = "ニュース／報道";
+      break;
+
+    case "1":
+      output = "スポーツ";
+      break;
+
+    case "2":
+      output = "情報／ワイドショー";
+      break;
+
+    case "3":
+      output = "ドラマ";
+      break;
+
+    case "4":
+      output = "音楽";
+      break;
+
+    case "5":
+      output = "バラエティ";
+      break;
+
+    case "6":
+      output = "映画";
+      break;
+
+    case "7":
+      output = "アニメ／特撮";
+      break;
+
+    case "8":
+      output = "ドキュメンタリー／教養";
+      break;
+
+    case "9":
+      output = "劇場／公演";
+      break;
+
+    case "10":
+      output = "趣味／教育";
+      break;
+
+    case "B":
+      output = "福祉";
+      break;
+
+    case "F":
+      output = "その他";
+      break;
+
+    default:
+      output = "不明";
+      break;
+  }
+
+  return output;
+}
+
+
+/**
+ * tickerText  縦スクロール用フォーマット変換
+ */
+var tickerText = function(text, wordNum){
+
+  var output = "<ul>";
+
+  var i = 0;
+  var count = 0;
+
+  for(i = 0; i < text.length; i++){
+
+    if(count == 0){
+      output += "<li>";
+    }
+
+    output += text[i];
+    count += 1;
+    
+    if((count > wordNum) && (i < text.length -1)){
+      output += "</li>";
+      count = 0;
+    }
+
+  }
+
+  output += "</ul>";
+
+  return output;
+
 }
