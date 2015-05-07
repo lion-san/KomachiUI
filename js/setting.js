@@ -27,6 +27,12 @@ var setting = function(){
   $("#btn11").removeAttr("disabled");
   $("#btn12").removeAttr("disabled");
 
+  //=========
+  $("#btnLight").removeAttr("disabled");
+  $("#btnAir").removeAttr("disabled");
+  $("#btnAirMode").removeAttr("disabled");
+  $("#btnAirUp").removeAttr("disabled");
+  $("#btnAirDw").removeAttr("disabled");
   //”リモコンを設定します”
   Android.settingStart();
 
@@ -70,6 +76,12 @@ var confirm = function(){
   $("#btn11").attr("disabled","disabled");
   $("#btn12").attr("disabled","disabled");
 
+  //=========
+  $("#btnLight").attr("disabled", "disabled");
+  $("#btnAir").attr("disabled", "disabled");
+  $("#btnAirMode").attr("disabled", "disabled");
+  $("#btnAirUp").attr("disabled", "disabled");
+  $("#btnAirDw").attr("disabled", "disabled");
   Android.settingSave();
 }
 
