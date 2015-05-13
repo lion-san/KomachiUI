@@ -134,6 +134,10 @@ var setButtons = function(flg){
     $("#btnAirMode").removeAttr("disabled");
     $("#btnAirUp").removeAttr("disabled");
     $("#btnAirDw").removeAttr("disabled");
+    $("#btnGeneral1").removeAttr("disabled");
+    $("#btnGeneral2").removeAttr("disabled");
+    $("#btnGeneral3").removeAttr("disabled");
+    $("#btnGeneral4").removeAttr("disabled");
   }
   else{
     $("#btnVU").attr("disabled", "disabled");
@@ -157,6 +161,10 @@ var setButtons = function(flg){
     $("#btnAirMode").attr("disabled", "disabled");
     $("#btnAirUp").attr("disabled", "disabled");
     $("#btnAirDw").attr("disabled", "disabled");
+    $("#btnGeneral1").attr("disabled", "disabled");
+    $("#btnGeneral2").attr("disabled", "disabled");
+    $("#btnGeneral3").attr("disabled", "disabled");
+    $("#btnGeneral4").attr("disabled", "disabled");
   }
  
 }
